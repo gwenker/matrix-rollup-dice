@@ -22,23 +22,13 @@ func newRenderer(a software.API) (*renderer, error) {
 		return nil, err
 	}
 
-	white, err := a.GetColorFromRemoteThemeByName("flat", "white_1")
-	if err != nil {
-		return nil, err
-	}
-
-	grey, err := a.GetColorFromRemoteThemeByName("flat", "dark_grey_1")
-	if err != nil {
-		return nil, err
-	}
-
 	return &renderer{
 		api:             a,
 		backgroundLayer: backgroundLayer,
 		valuesLayer:     valuesLayer,
 		caracterDriver:  cd,
-		backgroundColor: white,
-		dotColor:        grey,
+		backgroundColor: common.Color{R: 255, G: 255, B: 255, A: 1},
+		dotColor:        common.Color{A: 1},
 	}, nil
 }
 
